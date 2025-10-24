@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop - FashionStore</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .shop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border: 2px solid #dee2e6;
+      background: white;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn.active {
+      background: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1>🛍️ FashionStore</h1>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="shop-header">
+      <h2>All Products</h2>
+      <div class="filters">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Shirts</button>
+        <button class="filter-btn">Jackets</button>
+        <button class="filter-btn">Pants</button>
+        <button class="filter-btn">Accessories</button>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <!-- Main Products (with color variants) -->
+      <div class="card">
+        <div class="image-container">
+          <img src="https://m.media-amazon.com/images/I/71SWxE7+arL._SY741_.jpg" alt="Men's Formal Button Down Shirt" />
+          <div class="product-badge popular">Popular</div>
+        </div>
+        <div class="card-content">
+          <h4>Men's Formal Button Down Shirt</h4>
+          <p class="card-price">$29.99</p>
+          <p class="color-info">4 colors available</p>
+          <a href="index.html" class="btn-view-product">View Product</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="https://m.media-amazon.com/images/I/41SOayJ-rSL._SY741_.jpg" alt="Cotton Blend Full Sleeve Shirt" />
+          <div class="product-badge new">New</div>
+        </div>
+        <div class="card-content">
+          <h4>Cotton Blend Full Sleeve Shirt</h4>
+          <p class="card-price">$24.99</p>
+          <p class="color-info">3 colors available</p>
+          <a href="index.html" class="btn-view-product">View Product</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="https://m.media-amazon.com/images/I/71XX0OTaPbL._SX569_.jpg" alt="Premium Casual Washed Shirt" />
+        </div>
+        <div class="card-content">
+          <h4>Premium Casual Washed Shirt</h4>
+          <p class="card-price">$34.99</p>
+          <p class="color-info">4 colors available</p>
+          <a href="index.html" class="btn-view-product">View Product</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="https://m.media-amazon.com/images/I/610uC4XZ7HL._SY741_.jpg" alt="Women's Cotton Zipper Tshirt" />
+          <div class="product-badge sale">Sale</div>
+        </div>
+        <div class="card-content">
+          <h4>Women's Cotton Zipper Tshirt</h4>
+          <p class="card-price">$19.99</p>
+          <p class="color-info">3 colors available</p>
+          <a href="index.html" class="btn-view-product">View Product</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="https://m.media-amazon.com/images/I/51Ru4pJNWVL._SY741_.jpg" alt="Women's Mandarin Collar Shirt" />
+        </div>
+        <div class="card-content">
+          <h4>Women's Mandarin Collar Shirt</h4>
+          <p class="card-price">$27.99</p>
+          <p class="color-info">4 colors available</p>
+          <a href="index.html" class="btn-view-product">View Product</a>
+        </div>
+      </div>
+
+      <!-- Pair Well With Products (single color) -->
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/pair1.jpg" alt="Denim Jacket" onerror="this.src='https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=400&fit=crop'" />
+          <div class="product-badge popular">Bestseller</div>
+        </div>
+        <div class="card-content">
+          <h4>Denim Jacket</h4>
+          <p class="card-price">$59.99</p>
+          <p class="color-info">Classic Blue</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Denim Jacket', '$59.99', 'assets/pair1.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/pair2.jpg" alt="Chino Pants" onerror="this.src='https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=300&h=400&fit=crop'" />
+        </div>
+        <div class="card-content">
+          <h4>Chino Pants</h4>
+          <p class="card-price">$49.99</p>
+          <p class="color-info">Khaki</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Chino Pants', '$49.99', 'assets/pair2.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/pair3.jpg" alt="Leather Belt" onerror="this.src='https://images.unsplash.com/photo-1601924994980-3c1718eaa4b3?w=300&h=400&fit=crop'" />
+        </div>
+        <div class="card-content">
+          <h4>Leather Belt</h4>
+          <p class="card-price">$29.99</p>
+          <p class="color-info">Brown</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Leather Belt', '$29.99', 'assets/pair3.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <!-- Related Products (single color) -->
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/related1.jpg" alt="Graphic Tee" onerror="this.src='https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=400&fit=crop'" />
+          <div class="product-badge new">New</div>
+        </div>
+        <div class="card-content">
+          <h4>Graphic Tee</h4>
+          <p class="card-price">$24.99</p>
+          <p class="color-info">Black/White Print</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Graphic Tee', '$24.99', 'assets/related1.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/related2.jpg" alt="Striped Tee" onerror="this.src='https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=300&h=400&fit=crop'" />
+        </div>
+        <div class="card-content">
+          <h4>Striped Tee</h4>
+          <p class="card-price">$22.99</p>
+          <p class="color-info">Navy Blue Stripes</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Striped Tee', '$22.99', 'assets/related2.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/related3.jpg" alt="Polo Shirt" onerror="this.src='https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=300&h=400&fit=crop'" />
+          <div class="product-badge popular">Popular</div>
+        </div>
+        <div class="card-content">
+          <h4>Polo Shirt</h4>
+          <p class="card-price">$34.99</p>
+          <p class="color-info">Classic Fit</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Polo Shirt', '$34.99', 'assets/related3.jpg')">Add to Cart</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="image-container">
+          <img src="assets/related4.jpg" alt="Hoodie" onerror="this.src='https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300&h=400&fit=crop'" />
+        </div>
+        <div class="card-content">
+          <h4>Hoodie</h4>
+          <p class="card-price">$49.99</p>
+          <p class="color-info">Heavyweight</p>
+          <button class="btn-quick-add" onclick="addToCartFromShop('Hoodie', '$49.99', 'assets/related4.jpg')">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        // In a real app, you would filter products here
+      });
+    });
+
+    // Add to cart functionality for shop page
+    function addToCartFromShop(productName, price, image) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      let cartCount = document.getElementById('cartCount');
+      
+      // Add item to cart
+      const cartItem = {
+        name: productName,
+        price: price,
+        size: 'M', // Default size for quick add
+        colour: 'Standard', // Single color items
+        quantity: 1,
+        image: image
+      };
+      
+      cart.push(cartItem);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+      
+      // Show success message
+      showToast(`${productName} added to cart!`);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = 'toast show';
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // Initialize cart count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartCount = document.getElementById('cartCount');
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    });
+  </script>
+</body>
+</html>

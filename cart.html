@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cart - FashionStore</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .cart-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .cart-items {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .cart-summary {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      height: fit-content;
+    }
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-price {
+      font-weight: bold;
+      color: #007bff;
+      margin: 0.5rem 0;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e9ecef;
+    }
+    .summary-total {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    .empty-cart {
+      text-align: center;
+      padding: 3rem;
+      color: #6c757d;
+    }
+    .free-shipping {
+      color: #28a745;
+      font-weight: bold;
+    }
+    .shipping-note {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .cart-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1>🛍️ FashionStore</h1>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html" class="cart-icon active">🛒 <span id="cartCount">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 style="margin-bottom: 2rem;">Your Shopping Cart</h2>
+    
+    <div class="cart-container">
+      <div class="cart-items" id="cartItemsSection">
+        <!-- Cart items will be loaded dynamically -->
+      </div>
+
+      <div class="cart-summary" id="cartSummarySection">
+        <!-- Order summary will be loaded dynamically -->
+      </div>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+  <script>
+    // Cart functionality for cart page
+    function loadCartPage() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsSection = document.getElementById('cartItemsSection');
+      const cartSummarySection = document.getElementById('cartSummarySection');
+      const cartCount = document.getElementById('cartCount');
+
+      // Update cart count in header
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+      if (cart.length === 0) {
+        // Empty cart state
+        cartItemsSection.innerHTML = `
+          <div class="empty-cart">
+            <h3>🛒 Your cart is empty</h3>
+            <p>Looks like you haven't added any items to your cart yet.</p>
+            <a href="shop.html" class="btn-primary" style="display: inline-block; margin-top: 1rem;">Start Shopping</a>
+          </div>
+        `;
+
+        cartSummarySection.innerHTML = `
+          <h3>Ready to Shop?</h3>
+          <p>Add some amazing products to your cart to see your order summary here!</p>
+          <div style="background: #e7f3ff; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+            <p><strong>🚚 Free Shipping</strong> on orders over $50</p>
+            <p>↩️ 30-day return policy</p>
+            <p>💳 Secure checkout</p>
+          </div>
+          <a href="shop.html" class="btn-primary" style="display: block; text-align: center; width: 100%;">Browse Products</a>
+        `;
+        return;
+      }
+
+      // Cart has items - display them
+      let subtotal = 0;
+      cartItemsSection.innerHTML = `
+        <h3>Your Items (${cart.reduce((sum, item) => sum + item.quantity, 0)})</h3>
+        ${cart.map(item => {
+          const price = parseFloat(item.price.replace('$', ''));
+          const itemTotal = price * item.quantity;
+          subtotal += itemTotal;
+          
+          return `
+            <div class="cart-item">
+              <img src="${item.image}" alt="${item.name}">
+              <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <p>Color: ${item.colour} | Size: ${item.size}</p>
+                <div class="cart-item-price">${item.price} × ${item.quantity} = $${itemTotal.toFixed(2)}</div>
+                <button class="remove-btn" data-id="${item.name}-${item.colour}-${item.size}">Remove</button>
+              </div>
+              <div class="quantity-controls">
+                <span>Qty: ${item.quantity}</span>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      `;
+
+      // Calculate order summary
+      const shipping = subtotal > 50 ? 0 : 9.99;
+      const tax = subtotal * 0.08; // 8% tax
+      const total = subtotal + shipping + tax;
+
+      cartSummarySection.innerHTML = `
+        <h3>Order Summary</h3>
+        <div class="summary-row">
+          <span>Subtotal (${cart.reduce((sum, item) => sum + item.quantity, 0)} items):</span>
+          <span>$${subtotal.toFixed(2)}</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping:</span>
+          <span class="${shipping === 0 ? 'free-shipping' : ''}">
+            ${shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}
+          </span>
+        </div>
+        ${shipping > 0 ? `
+          <div class="shipping-note">
+            Add $${(50 - subtotal).toFixed(2)} more for free shipping!
+          </div>
+        ` : ''}
+        <div class="summary-row">
+          <span>Tax:</span>
+          <span>$${tax.toFixed(2)}</span>
+        </div>
+        <div class="summary-row summary-total">
+          <span>Total:</span>
+          <span>$${total.toFixed(2)}</span>
+        </div>
+        
+        <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="proceedToCheckout()">
+          Proceed to Checkout
+        </button>
+        <a href="shop.html" class="btn-secondary" style="display: block; text-align: center; margin-top: 1rem;">
+          Continue Shopping
+        </a>
+        
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+          <p><strong>🔒 Secure Checkout</strong></p>
+          <p style="font-size: 0.9rem; color: #6c757d; margin: 0.5rem 0 0 0;">
+            Your payment information is encrypted and secure
+          </p>
+        </div>
+      `;
+
+      // Add remove button event listeners
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const itemId = this.dataset.id;
+          removeFromCart(itemId);
+        });
+      });
+    }
+
+    function removeFromCart(itemId) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const initialLength = cart.length;
+      
+      cart = cart.filter(item => `${item.name}-${item.colour}-${item.size}` !== itemId);
+      
+      if (cart.length < initialLength) {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        showToast('Item removed from cart');
+        loadCartPage();
+      }
+    }
+
+    function proceedToCheckout() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        showToast('Your cart is empty!', 'error');
+        return;
+      }
+      
+      // In a real app, this would redirect to checkout
+      showToast('Proceeding to checkout... This would redirect to payment in a real store.');
+      
+      // Simulate checkout process
+      setTimeout(() => {
+        // For demo purposes, let's clear the cart after "checkout"
+        // localStorage.removeItem('cart');
+        // loadCartPage();
+        // showToast('Order placed successfully! Thank you for your purchase.', 'success');
+      }, 2000);
+    }
+
+    function showToast(message, type = 'success') {
+      // Create toast if it doesn't exist
+      let toast = document.getElementById('toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'toast';
+        toast.className = 'toast';
+        document.body.appendChild(toast);
+      }
+      
+      toast.textContent = message;
+      toast.className = 'toast';
+      
+      if (type === 'error') {
+        toast.classList.add('error');
+      }
+      
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadCartPage);
+  </script>
+</body>
+</html>

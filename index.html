@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shopify-Style Product Page</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1>🛍️ FashionStore</h1>
+      <nav class="header-nav">
+  <a href="index.html">Home</a>
+  <a href="shop.html">Shop</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="cart.html" class="cart-icon">🛒 <span id="cartCount">0</span></a>
+</nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Product Section -->
+    <section class="product-section">
+      <div class="gallery">
+        <div class="main-image">
+          <img id="mainImage" src="https://m.media-amazon.com/images/I/71SWxE7+arL._SY741_.jpg" alt="Men's Formal Button Down Shirt" />
+          <div class="image-badge">Best Seller 🔥</div>
+        </div>
+        <div class="thumbnails" id="thumbnailContainer">
+          <img src="https://m.media-amazon.com/images/I/71SWxE7+arL._SY741_.jpg" class="thumb active" alt="Men's Formal Button Down Shirt" 
+               data-name="Men's Formal Button Down Shirt" data-price="$29.99" data-original-price="$39.99" />
+          <img src="https://m.media-amazon.com/images/I/41SOayJ-rSL._SY741_.jpg" class="thumb" alt="Cotton Blend Full Sleeve Shirt" 
+               data-name="Cotton Blend Full Sleeve Shirt" data-price="$24.99" data-original-price="$32.99" />
+          <img src="https://m.media-amazon.com/images/I/71XX0OTaPbL._SX569_.jpg" class="thumb" alt="Premium Casual Washed Shirt" 
+               data-name="Premium Casual Washed Shirt" data-price="$34.99" data-original-price="$44.99" />
+          <img src="https://m.media-amazon.com/images/I/610uC4XZ7HL._SY741_.jpg" class="thumb" alt="Women's Cotton Zipper Tshirt" 
+               data-name="Women's Cotton Zipper Tshirt" data-price="$19.99" data-original-price="$24.99" />
+          <img src="https://m.media-amazon.com/images/I/51Ru4pJNWVL._SY741_.jpg" class="thumb" alt="Women's Mandarin Collar Shirt" 
+               data-name="Women's Mandarin Collar Shirt" data-price="$27.99" data-original-price="$34.99" />
+        </div>
+      </div>
+
+      <div class="details">
+        <div class="product-badge">Sale</div>
+        <h2>Men's Formal Button Down Shirt</h2>
+        <div class="price-container">
+          <p class="price">$29.99</p>
+          <p class="original-price">$39.99</p>
+          <span class="discount">Save 25%</span>
+        </div>
+        
+        <div class="rating">
+          <div class="stars">★★★★★</div>
+          <span class="review-count">(2,847 reviews)</span>
+        </div>
+
+        <div class="variants">
+          <div class="colour-picker">
+            <label>Colour:</label>
+            <div class="swatches">
+              <span class="swatch active" data-colour="White" data-image="https://m.media-amazon.com/images/I/71SWxE7+arL._SY741_.jpg" style="background: #ffffff; border: 1px solid #ccc;"></span>
+              <span class="swatch" data-colour="Black" data-image="https://m.media-amazon.com/images/I/615W1abrC2L._SY741_.jpg" style="background: #000000;"></span>
+              <span class="swatch" data-colour="Maroon" data-image="https://m.media-amazon.com/images/I/61qkmzkjztL._SY741_.jpg" style="background: #800000;"></span>
+              <span class="swatch" data-colour="Blue" data-image="https://m.media-amazon.com/images/I/61Krw8gk0aL._SY741_.jpg" style="background: #0000ff;"></span>
+            </div>
+            <button id="compareBtn" class="btn-secondary">Compare Colours</button>
+          </div>
+
+          <div class="size-picker">
+            <label>Size:</label>
+            <div class="size-options">
+              <button class="size-option" data-size="S">S</button>
+              <button class="size-option active" data-size="M">M</button>
+              <button class="size-option" data-size="L">L</button>
+              <button class="size-option" data-size="XL">XL</button>
+              <button class="size-option" data-size="XXL">XXL</button>
+            </div>
+            <button id="sizeChartBtn" class="btn-secondary">Size Chart</button>
+          </div>
+        </div>
+
+        <div class="quantity-picker">
+          <label>Quantity:</label>
+          <div class="quantity-controls">
+            <button class="quantity-btn" id="decreaseQty">-</button>
+            <input type="number" id="quantity" value="1" min="1" max="10">
+            <button class="quantity-btn" id="increaseQty">+</button>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button class="btn-primary" id="addToCart">Add to Cart</button>
+          <button class="btn-secondary" id="buyNow">Buy Now</button>
+          <button class="btn-wishlist">❤️</button>
+        </div>
+
+        <div class="shipping-info">
+          <p>🚚 Free shipping on orders over $50</p>
+          <p>↩️ 30-day return policy</p>
+          <p>✅ In stock - Ready to ship</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pair Well With -->
+    <section class="pair-well">
+      <h3>Pair Well With</h3>
+      <div class="carousel">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=300&h=300&fit=crop" alt="Denim Jacket" />
+          <h4>Denim Jacket</h4>
+          <p>$59.99</p>
+          <button class="btn-add-pair">+ Add</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=300&h=300&fit=crop" alt="Chino Pants" />
+          <h4>Chino Pants</h4>
+          <p>$49.99</p>
+          <button class="btn-add-pair">+ Add</button>
+        </div>
+        <div class="card">
+          <img src="https://www.bing.com/th/id/OIP.FWlZFVpYskXvKAzBJCKE3gHaEm?w=244&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Leather Belt" />
+          <h4>Leather Belt</h4>
+          <p>$29.99</p>
+          <button class="btn-add-pair">+ Add</button>
+        </div>
+        <div class="card">
+          <img src="https://tse2.mm.bing.net/th/id/OIP.UKfDNyLWUK131Elq8SwoPQHaFE?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Dress Shoes" />
+          <h4>Dress Shoes</h4>
+          <p>$89.99</p>
+          <button class="btn-add-pair">+ Add</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bundle -->
+    <section class="bundle">
+      <h3>Style Bundle - Save More</h3>
+      <div class="bundle-items">
+        <div class="bundle-item">
+          <input type="checkbox" id="bundle1" checked>
+          <label for="bundle1">Men's Formal Button Down Shirt - $29.99</label>
+        </div>
+        <div class="bundle-item">
+          <input type="checkbox" id="bundle2">
+          <label for="bundle2">Denim Jacket - $59.99</label>
+        </div>
+        <div class="bundle-item">
+          <input type="checkbox" id="bundle3">
+          <label for="bundle3">Leather Belt - $29.99</label>
+        </div>
+      </div>
+      <div class="bundle-savings">
+        <p>Regular Price: <span class="regular-price">$149.97</span></p>
+        <p class="bundle-total">Bundle Price: <strong>$99.97</strong></p>
+        <p class="savings">You Save: <span class="save-amount">$50.00</span></p>
+      </div>
+      <button class="btn-primary bundle-btn">Add Bundle to Cart</button>
+    </section>
+
+    <!-- Tabs -->
+    <section class="tabs">
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="desc">Description</button>
+        <button class="tab-btn" data-tab="info">Product Info</button>
+        <button class="tab-btn" data-tab="ship">Shipping</button>
+        <button class="tab-btn" data-tab="reviews">Reviews</button>
+      </div>
+      <div class="tab-content active" id="desc">
+        <p>Elevate your professional wardrobe with this premium formal button-down shirt. Perfect for business meetings, office wear, and formal occasions. Crafted with attention to detail for a sharp, polished look.</p>
+        <ul class="feature-list">
+          <li>✅ Slim fit design for modern silhouette</li>
+          <li>✅ Poly-cotton blend for comfort & durability</li>
+          <li>✅ Wrinkle-resistant fabric</li>
+          <li>✅ Available in multiple sizes and colors</li>
+          <li>✅ Machine washable</li>
+        </ul>
+      </div>
+      <div class="tab-content" id="info">
+        <table class="specs-table">
+          <tr><th>Material</th><td>60% Cotton, 40% Polyester</td></tr>
+          <tr><th>Fit</th><td>Slim Fit</td></tr>
+          <tr><th>Care</th><td>Machine Wash Cold</td></tr>
+          <tr><th>Origin</th><td>Imported</td></tr>
+          <tr><th>Style</th><td>Business Formal</td></tr>
+        </table>
+      </div>
+      <div class="tab-content" id="ship">
+        <p>🚚 <strong>Free Shipping</strong> on orders over $50</p>
+        <p>📦 <strong>Standard Delivery:</strong> 3-5 business days</p>
+        <p>⚡ <strong>Express Shipping:</strong> 1-2 business days ($9.99)</p>
+        <p>🔄 <strong>Returns:</strong> 30-day easy returns</p>
+      </div>
+      <div class="tab-content" id="reviews">
+        <div class="review-summary">
+          <div class="average-rating">4.7 ★</div>
+          <p>Based on 2,847 reviews</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer">Michael T.</span>
+            <span class="review-stars">★★★★★</span>
+          </div>
+          <p class="review-text">Perfect fit and great quality! The fabric is comfortable and looks professional. Highly recommend for office wear.</p>
+        </div>
+        <div class="review">
+          <div class="review-header">
+            <span class="reviewer">Sarah K.</span>
+            <span class="review-stars">★★★★☆</span>
+          </div>
+          <p class="review-text">Bought this for my husband. The material is good quality and it fits well. The colors are exactly as shown.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related">
+      <h3>Related Products</h3>
+      <div class="related-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=300&fit=crop" alt="Graphic Tee" />
+          <h4>Graphic Tee</h4>
+          <p class="card-price">$24.99</p>
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?w=300&h=300&fit=crop" alt="Striped Tee" />
+          <h4>Striped Tee</h4>
+          <p class="card-price">$22.99</p>
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=300&h=300&fit=crop" alt="Polo Shirt" />
+          <h4>Polo Shirt</h4>
+          <p class="card-price">$34.99</p>
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300&h=300&fit=crop" alt="Hoodie" />
+          <h4>Hoodie</h4>
+          <p class="card-price">$49.99</p>
+          <button class="btn-quick-add">Quick Add</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Size Chart Modal -->
+  <div id="sizeChartModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Size Chart (in inches)</h3>
+      <table>
+        <thead>
+          <tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th><th>Sleeve</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>36-38</td><td>28</td><td>17</td><td>24</td></tr>
+          <tr><td>M</td><td>38-40</td><td>29</td><td>18</td><td>25</td></tr>
+          <tr><td>L</td><td>40-42</td><td>30</td><td>19</td><td>26</td></tr>
+          <tr><td>XL</td><td>42-44</td><td>31</td><td>20</td><td>27</td></tr>
+          <tr><td>XXL</td><td>44-46</td><td>32</td><td>21</td><td>28</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Compare Colours Modal -->
+  <div id="compareModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>Available Colors</h3>
+      <div id="compareColours" class="compare-area"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
