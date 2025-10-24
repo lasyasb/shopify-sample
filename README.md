@@ -30,29 +30,29 @@ This project demonstrates a complete product page with essential e-commerce feat
 - JavaScript ES6+: Modular functions, event handling, localStorage
 - No dependencies: Pure vanilla implementation
 fashionstore/
-├── index.html # Main product page
-├── home.html # Homepage
-├── shop.html # Product catalog
-├── about.html # About us page
-├── contact.html # Contact form
-├── cart.html # Shopping cart
+├── index.html          # Main product page
+├── home.html           # Homepage
+├── shop.html           # Product catalog
+├── about.html          # About us page
+├── contact.html        # Contact form
+├── cart.html           # Shopping cart
 ├── css/
-│ └── style.css # All styles
+│   └── style.css       # All styles
 ├── js/
-│ └── script.js # JavaScript functionality
-├── assets/ # Product images
-│ ├── product1.jpg
-│ ├── product2.jpg
-│ ├── product3.jpg
-│ ├── product4.jpg
-│ ├── product5.jpg
-│ ├── pair1.jpg
-│ ├── pair2.jpg
-│ ├── pair3.jpg
-│ ├── related1.jpg
-│ ├── related2.jpg
-│ ├── related3.jpg
-│ └── related4.jpg
+│   └── script.js       # JavaScript functionality
+├── assets/             # Product images
+│   ├── product1.jpg
+│   ├── product2.jpg
+│   ├── product3.jpg
+│   ├── product4.jpg
+│   ├── product5.jpg
+│   ├── pair1.jpg
+│   ├── pair2.jpg
+│   ├── pair3.jpg
+│   ├── related1.jpg
+│   ├── related2.jpg
+│   ├── related3.jpg
+│   └── related4.jpg
 └── README.md
 
 ## 🎯 Key Functionality
